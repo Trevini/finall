@@ -1,0 +1,68 @@
+<<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Flashcards Interativos</title>
+</head>
+<body>
+    <main>
+        <section id="container">
+            <!-- Cards serão gerados aqui -->
+        </section>
+    </main>
+    <footer>
+        <p>Desenvolvido por ChatGPT - Flashcards Divertidos</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
+const questions = [
+    {
+        question: "O que é HTML?",
+        answer: "HTML (HyperText Markup Language) é a linguagem de marcação padrão usada para criar páginas web."
+    },
+    {
+        question: "O que é CSS?",
+        answer: "CSS (Cascading Style Sheets) é a linguagem usada para definir o estilo e o layout de uma página web."
+    },
+    {
+        question: "O que é JavaScript?",
+        answer: "JavaScript é uma linguagem de programação usada para criar interatividade em páginas web."
+    },
+    {
+        question: "O que é um framework?",
+        answer: "Framework é uma estrutura pré-definida que facilita o desenvolvimento de software, fornecendo ferramentas e padrões."
+    },
+    {
+        question: "O que significa 'responsive design'?",
+        answer: "Responsive Design é uma técnica de design web que garante que uma página se ajuste bem a diferentes tamanhos de tela, como celulares e desktops."
+    }
+];
+
+const container = document.getElementById("container");
+
+questions.forEach((item, index) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const cardContent = document.createElement("div");
+    cardContent.classList.add("card-content");
+    cardContent.innerText = item.question;
+
+    const cardAnswer = document.createElement("div");
+    cardAnswer.classList.add("card-answer");
+    cardAnswer.innerText = item.answer;
+
+    card.appendChild(cardContent);
+    card.appendChild(cardAnswer);
+
+    card.addEventListener("click", () => {
+        const answerElement = card.querySelector(".card-answer");
+        answerElement.style.display = answerElement.style.display === "block" ? "none" : "block";
+    });
+
+    container.appendChild(card);
+});
